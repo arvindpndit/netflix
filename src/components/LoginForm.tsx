@@ -1,4 +1,4 @@
-import React, { useRef }from 'react'
+import React, { useRef, useState }from 'react'
 
 import { validateForm } from '../utils/validateForm'
 
@@ -10,6 +10,8 @@ interface Props {
 const LoginForm : React.FC<Props> = (props) => {
   const {toggleLoginForm, setToggleLoginForm} = props;
 
+  const [showLoginValidErrorMsg, setShowLoginValidErrorMsg] = useState<string>("")
+
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
@@ -20,7 +22,13 @@ const LoginForm : React.FC<Props> = (props) => {
         email: email.current.value,
         password: password.current.value,
       })
-      console.log(isValid)
+      
+      if(typeof(isValid )=== "string"){
+        setShowLoginValidErrorMsg(isValid)
+      }
+      if(typeof(isValid )=== "boolean"){
+        setShowLoginValidErrorMsg("")
+      }
     }
 
   }
@@ -50,6 +58,9 @@ const LoginForm : React.FC<Props> = (props) => {
         placeholder="Password"
         className="w-full py-2 px-3 rounded-lg mb-4 bg-gray-800 text-white placeholder-gray-400"
       />
+      <div className='text-sm text-green-600 mb-3'>
+        {showLoginValidErrorMsg}
+      </div>
       <button className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold mb-4" onClick={handleForm}>
         {toggleLoginForm ? "Sign In" : "Sign Up"}
       </button>

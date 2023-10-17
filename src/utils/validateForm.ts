@@ -3,20 +3,21 @@ interface Props {
   password: string,
 }
 
-export function validateForm (props: Props) {
+export function validateForm (props: Props) : string | boolean {
   const {email, password} = props
 
   const isValidEmail : boolean = validateEmail(email);
   const isValidPassword : boolean = validatePassword(password);
 
-  if(!isValidEmail) alert("Please put a correct email");
-  if(!isValidPassword) alert("Please put a valid password")
+  if(!isValidEmail) return("Please put a valid email");
+  if(!isValidPassword) return ("Please put a valid password")
 
   if(isValidEmail && isValidPassword) {
-    alert("validation successfull")
+    return true;
   }
-
-}
+  
+  return false;
+} 
 
 function validateEmail(email: string): boolean{
   const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
