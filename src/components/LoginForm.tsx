@@ -3,12 +3,12 @@ import React, { useRef, useState }from 'react'
 import { handleForm } from '../utils/handleForm'
 
 interface Props {
-  toggleLoginForm: boolean,
-  setToggleLoginForm:React.Dispatch<React.SetStateAction<boolean>>
+  showSignInForm: boolean,
+  setShowSignInForm:React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const LoginForm : React.FC<Props> = (props) => {
-  const {toggleLoginForm, setToggleLoginForm} = props;
+  const {showSignInForm, setShowSignInForm} = props;
 
   const [showLoginValidErrorMsg, setShowLoginValidErrorMsg] = useState<string>("")
 
@@ -18,10 +18,10 @@ const LoginForm : React.FC<Props> = (props) => {
   return (
     <div className="w-11/12 md:w-4/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 bg-black text-white rounded-lg bg-opacity-80 shadow-lg">
       <h1 className="text-3xl font-bold mb-4">
-        {toggleLoginForm ? "Sign In" : "Sign Up"}
+        {showSignInForm ? "Sign In" : "Sign Up"}
       </h1>
       {
-        !toggleLoginForm &&
+        !showSignInForm &&
         <input
         type="text"
         placeholder="Full Name"
@@ -44,10 +44,10 @@ const LoginForm : React.FC<Props> = (props) => {
         {showLoginValidErrorMsg}
       </div>
       <button className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold mb-4" onClick={() => { handleForm({email, password, setShowLoginValidErrorMsg})}}>
-        {toggleLoginForm ? "Sign In" : "Sign Up"}
+        {showSignInForm ? "Sign In" : "Sign Up"}
       </button>
-      <p className="text-sm text-gray-300 cursor-pointer" onClick={() => setToggleLoginForm(!toggleLoginForm)}>
-        {toggleLoginForm ? (
+      <p className="text-sm text-gray-300 cursor-pointer" onClick={() => setShowSignInForm(!showSignInForm)}>
+        {showSignInForm ? (
           <>
             New to Netflix-GPT? <span className="text-red-500">Sign up now.</span>
           </>

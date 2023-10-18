@@ -16,11 +16,9 @@ export const handleForm = (props: HandleFormProps) => {
       password: password.current.value,
     })
     
-    if(typeof(isValid )=== "string"){
-      setShowLoginValidErrorMsg(isValid)
-    }
-    if(typeof(isValid )=== "boolean"){
-      setShowLoginValidErrorMsg("")
-    }
+    typeof(isValid ) === "string" ? setShowLoginValidErrorMsg(isValid):setShowLoginValidErrorMsg("");
+
+    
+    
   }
 }
