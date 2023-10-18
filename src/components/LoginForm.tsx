@@ -43,7 +43,7 @@ const LoginForm : React.FC<Props> = (props) => {
       <div className='text-sm text-green-600 mb-3'>
         {showLoginValidErrorMsg}
       </div>
-      <button className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold mb-4" onClick={() => { handleForm({email, password, setShowLoginValidErrorMsg})}}>
+      <button className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold mb-4" onClick={() => { handleForm({email, password, showSignInForm, setShowLoginValidErrorMsg})}}>
         {showSignInForm ? "Sign In" : "Sign Up"}
       </button>
       <p className="text-sm text-gray-300 cursor-pointer" onClick={() => setShowSignInForm(!showSignInForm)}>
