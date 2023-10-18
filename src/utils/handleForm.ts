@@ -1,5 +1,5 @@
 import { validateForm } from '../utils/validateForm'
-import { signUpUser } from './authenticateUser'
+import { signUpUser, signInUser } from './authenticateUser'
 import { auth } from "../config/firebase-config";
 
 interface HandleFormProps {
@@ -11,7 +11,7 @@ interface HandleFormProps {
 
 export const handleForm = (props: HandleFormProps) => {
   const {email, password, showSignInForm, setShowLoginValidErrorMsg} = props;
-  console.log(email , password)
+  //console.log(email , password)
 
   if(email.current && password.current){
     const isValid = validateForm({
@@ -21,18 +21,13 @@ export const handleForm = (props: HandleFormProps) => {
     
     typeof(isValid ) === "string" ? setShowLoginValidErrorMsg(isValid):setShowLoginValidErrorMsg("");
 
-    if(showSignInForm){
-      //sign in logic 
-     
+    const authencateUserParams = {
+      auth: auth,
+      email: email.current.value,
+      password: password.current.value,
     }
-    else{
-      //sign up
-      signUpUser({
-        auth: auth,
-        email: email.current.value,
-        password: password.current.value,
-      })
-    }
-    
+  
+    if(showSignInForm) signInUser(authencateUserParams) 
+    else signUpUser(authencateUserParams)  
   }
 }
