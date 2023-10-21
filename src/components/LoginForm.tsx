@@ -1,6 +1,8 @@
 import React, { useRef, useState }from 'react'
+import { useDispatch } from 'react-redux';
 
 import { handleForm } from '../utils/handleForm'
+import { addUser } from '../redux/userSlice';
 
 interface Props {
   showSignInForm: boolean,
@@ -9,11 +11,22 @@ interface Props {
 
 const LoginForm : React.FC<Props> = (props) => {
   const {showSignInForm, setShowSignInForm} = props;
+  const dispatch = useDispatch();
 
   const [showLoginValidErrorMsg, setShowLoginValidErrorMsg] = useState<string>("")
 
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
+
+  async function handleSignInOut() : Promise<void> {
+    const user = await handleForm({email, password, showSignInForm, setShowLoginValidErrorMsg});
+    console.log(user)
+    if (!user) return;
+    dispatch(addUser({
+      uid: user.uid,
+      email: user.email,
+    }));
+  }
 
   return (
     <div className="w-11/12 md:w-4/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 bg-black text-white rounded-lg bg-opacity-80 shadow-lg">
@@ -43,7 +56,9 @@ const LoginForm : React.FC<Props> = (props) => {
       <div className='text-sm text-green-600 mb-3'>
         {showLoginValidErrorMsg}
       </div>
-      <button className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold mb-4" onClick={() => { handleForm({email, password, showSignInForm, setShowLoginValidErrorMsg})}}>
+      <button 
+        className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold mb-4" onClick={handleSignInOut}
+      >
         {showSignInForm ? "Sign In" : "Sign Up"}
       </button>
       <p className="text-sm text-gray-300 cursor-pointer" onClick={() => setShowSignInForm(!showSignInForm)}>

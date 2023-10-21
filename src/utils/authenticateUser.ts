@@ -12,7 +12,8 @@ export async function signUpUser(params : Params){
   try {
     const userCredential : UserCredential = await createUserWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
-    console.log(user)
+    //console.log(user)
+    return user;
   } catch (error : any) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -26,7 +27,8 @@ export async function signInUser(params : Params){
   try {
     const userCredential : UserCredential = await signInWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
-    console.log(user)
+    //console.log(user);
+    return user;
   } catch (error : any) {
     const errorCode = error.code;
     const errorMessage = error.message;

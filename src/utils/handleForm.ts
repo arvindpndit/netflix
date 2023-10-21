@@ -28,7 +28,7 @@ export const handleForm = (props: HandleFormProps) => {
       setShowLoginValidErrorMsg: setShowLoginValidErrorMsg,
     }
   
-    if(showSignInForm) signInUser(authencateUserParams) 
-    else signUpUser(authencateUserParams)  
+    if(showSignInForm) return signInUser(authencateUserParams) 
+    else return signUpUser(authencateUserParams)  
   }
 }
