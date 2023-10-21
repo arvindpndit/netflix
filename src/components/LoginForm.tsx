@@ -1,5 +1,6 @@
 import React, { useRef, useState }from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { handleForm } from '../utils/handleForm'
 import { addUser } from '../redux/userSlice';
@@ -11,6 +12,7 @@ interface Props {
 
 const LoginForm : React.FC<Props> = (props) => {
   const {showSignInForm, setShowSignInForm} = props;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [showLoginValidErrorMsg, setShowLoginValidErrorMsg] = useState<string>("")
@@ -26,6 +28,7 @@ const LoginForm : React.FC<Props> = (props) => {
       uid: user.uid,
       email: user.email,
     }));
+    navigate("/browse");
   }
 
   return (
