@@ -4,10 +4,11 @@ interface Params {
   auth: Auth,
   email: string,
   password: string,
+  setShowLoginValidErrorMsg: React.Dispatch<React.SetStateAction<string>>
 }
 
 export async function signUpUser(params : Params){
-  const {auth, email, password} = params;
+  const {auth, email, password, setShowLoginValidErrorMsg} = params;
   try {
     const userCredential : UserCredential = await createUserWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
@@ -16,11 +17,12 @@ export async function signUpUser(params : Params){
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorCode, errorMessage)
+    setShowLoginValidErrorMsg(errorMessage)
   }
 }
 
 export async function signInUser(params : Params){
-  const {auth, email, password} = params;
+  const {auth, email, password, setShowLoginValidErrorMsg} = params;
   try {
     const userCredential : UserCredential = await signInWithEmailAndPassword(auth, email, password)
     const user = userCredential.user;
@@ -29,6 +31,7 @@ export async function signInUser(params : Params){
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorCode, errorMessage)
+    setShowLoginValidErrorMsg(errorMessage)
   }
 }
 

@@ -25,6 +25,7 @@ export const handleForm = (props: HandleFormProps) => {
       auth: auth,
       email: email.current.value,
       password: password.current.value,
+      setShowLoginValidErrorMsg: setShowLoginValidErrorMsg,
     }
   
     if(showSignInForm) signInUser(authencateUserParams) 
