@@ -23,12 +23,14 @@ const LoginForm : React.FC<Props> = (props) => {
   async function handleSignInOut() : Promise<void> {
     const user = await handleForm({email, password, showSignInForm, setShowLoginValidErrorMsg});
     console.log(user)
-    if (!user) return;
-    dispatch(addUser({
-      uid: user.uid,
-      email: user.email,
-    }));
-    navigate("/browse");
+    if (user == null) navigate("/");
+    else {
+      dispatch(addUser({
+        uid: user.uid,
+        email: user.email,
+      }));
+      navigate("/browse");
+    }
   }
 
   return (
