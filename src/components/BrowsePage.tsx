@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Header from './Header'
 import { removeUser } from '../redux/userSlice'
-// import LoginPage from './LoginPage'
 import { RootState } from '../redux/store'
+import { OPTIONS } from '../constants/constants'
 
 const BrowsePage : React.FC = () => {
   const dispatch = useDispatch();
@@ -14,10 +14,15 @@ const BrowsePage : React.FC = () => {
   const user = useSelector((state : RootState) => state.user);
   
   useEffect(()=>{
-    if (user === null)  navigate("/");
+    if (user === null)  navigate("/");   
+    
+    fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', OPTIONS)
+    .then(response => response.json())
+    .then(response => console.log(response.results))
+    .catch(err => console.error(err));
   },[])
   
-  const handleClick = () => {
+  const handleClick = () : void => {
     navigate("/");
     dispatch(removeUser())
   }
@@ -26,7 +31,8 @@ const BrowsePage : React.FC = () => {
     <div>
       <div >
         <Header/>
-        <button className=" mt-48 p-2 bg-red-600" onClick={handleClick}>Sign out</button>
+        <button className="mt-4 ml-96 z-50 p-2 bg-red-600 text-white hover:bg-red-700 absolute" onClick={handleClick}> Sign out
+        </button>
       </div>
     </div>
   )
