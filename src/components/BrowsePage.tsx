@@ -6,20 +6,27 @@ import Header from './Header'
 import { removeUser } from '../redux/userSlice'
 import { RootState } from '../redux/store'
 import { OPTIONS } from '../constants/constants'
+import { addMovies } from '../redux/movieSlice'
 
 const BrowsePage : React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const user = useSelector((state : RootState) => state.user);
+
+  async function getMoviesData() {
+    try {
+      const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', OPTIONS)
+      const json = await data.json();
+      dispatch(addMovies(json.results));
+    } catch (error) {
+      throw error;
+    }
+  }
   
-  useEffect(()=>{
+  useEffect(() => {
     if (user === null)  navigate("/");   
-    
-    fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', OPTIONS)
-    .then(response => response.json())
-    .then(response => console.log(response.results))
-    .catch(err => console.error(err));
+    getMoviesData();
   },[])
   
   const handleClick = () : void => {
