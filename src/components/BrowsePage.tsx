@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { removeUser } from "../redux/userSlice";
 import Header from "./Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import BrowseHeroContainer from "./BrowseHeroContainer";
 
 const BrowsePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ const BrowsePage: React.FC = () => {
         >
           Sign out
         </button>
+
+        <BrowseHeroContainer />
       </div>
     </div>
   );
