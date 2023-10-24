@@ -8,9 +8,9 @@ interface Props {
 const VideoDescription: React.FC<Props> = (props) => {
   const { title, overview } = props;
   return (
-    <div className="bg-black bg-opacity-40  text-white p-4 rounded-lg h-screen pt-72">
+    <div className=" text-white p-4 md:p-8 rounded-lg h-screen md:h-auto pt-72">
       <h1 className="text-4xl font-bold">{title}</h1>
-      <p className="mt-2 text-sm w-2/5">{overview}</p>
+      <p className="mt-4 text-lg md:text-base text-gray-300">{overview}</p>
     </div>
   );
 };

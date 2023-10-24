@@ -9,15 +9,16 @@ const VideoPlayback: React.FC<Props> = ({ id }) => {
   const movieTrailer = useNowPlayingTrailer(id);
 
   return (
-    <div>
+    <div className="w-full h-full overflow-hidden">
       <iframe
-        width="560"
-        height="315"
+        className="w-screen h-screen"
         src={movieTrailer}
+        style={{
+          transform: "scale(1.3)",
+        }}
         title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
+        loop="1"
+        allow="accelerometer; autoplay; gyroscope; clipboard-write; encrypted-media; picture-in-picture; web-share"
       ></iframe>
     </div>
   );
