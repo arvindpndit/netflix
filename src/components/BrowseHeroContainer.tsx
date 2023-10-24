@@ -11,12 +11,12 @@ const BrowseHeroContainer: React.FC = () => {
 
   const movie: [] = nowPlayingMovies.moviesList;
   const randomIndex: number = Math.floor(Math.random() * movie.length);
-  const { title, overview } = movie[randomIndex];
+  const { id, title, overview } = movie[randomIndex];
 
   return (
     <div>
       <VideoDescription title={title} overview={overview} />
-      <VideoPlayback />
+      <VideoPlayback id={id} />
     </div>
   );
 };
