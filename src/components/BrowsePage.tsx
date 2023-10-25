@@ -6,6 +6,7 @@ import { removeUser } from "../redux/userSlice";
 import Header from "./Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import BrowseHeroContainer from "./BrowseHeroContainer";
+import BrowseMoviesCardsList from "./BrowseMoviesCardsList";
 
 const BrowsePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const BrowsePage: React.FC = () => {
         </button>
 
         <BrowseHeroContainer />
+        <BrowseMoviesCardsList />
       </div>
     </div>
   );
