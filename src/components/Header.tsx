@@ -16,19 +16,27 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="h-24 w-full z-50 absolute bg-gradient-to-b from-black ">
+    <div className="px-10 h-24 w-full z-50 absolute bg-gradient-to-b from-black flex items-center">
       <img
-        className="h-full px-3"
+        className="h-full"
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+        alt="Netflix Logo"
       />
 
       {user === null ? null : (
-        <button
-          className="mt-4 ml-96 z-50 p-2 bg-red-600 text-white hover:bg-red-700 absolute"
-          onClick={handleClick}
-        >
-          Sign out
-        </button>
+        <div className="ml-auto mr-5 flex items-center">
+          <img
+            src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp"
+            alt=""
+            className="h-12 "
+          />
+          <button
+            className="ml-2 px-2 py-3 bg-red-600 text-white hover:bg-red-700"
+            onClick={handleClick}
+          >
+            Sign Out
+          </button>
+        </div>
       )}
     </div>
   );
