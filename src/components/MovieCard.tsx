@@ -10,11 +10,11 @@ const MovieCard: React.FC<Props> = (props) => {
   console.log(movies);
 
   return (
-    <div className="relative">
-      <div className="text-xl bg-black text-white font-semibold py-3 pl-7">
+    <div className="relative px-16 bg-black">
+      <div className="text-xl bg-black text-white font-semibold py-3">
         {title}
       </div>
-      <div className="flex overflow-x-auto flex-row gap-4 bg-black ">
+      <div className="flex overflow-x-auto flex-row gap-4">
         {movies.map((movie) => {
           const moviePosterImagePath: string = movie?.backdrop_path;
           const movieTitle: string = movie?.title;
