@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import MovieCard from "./MovieCard";
+import shuffleArray from "../utils/shuffleArray";
+import { MOVIE_LIST_TITLES } from "../constants/constants";
 
 const BrowseMoviesCardsList: React.FC = () => {
   const nowPlayingMovies = useSelector((state: RootState) => state.movie);
@@ -9,9 +11,13 @@ const BrowseMoviesCardsList: React.FC = () => {
   if (!nowPlayingMovies.moviesList) return;
 
   const movies: [] = nowPlayingMovies.moviesList;
+
   return (
     <div>
-      <MovieCard movies={movies} />
+      {MOVIE_LIST_TITLES.map((title) => {
+        let shuffled = shuffleArray(movies);
+        return <MovieCard movies={shuffled} title={title} />;
+      })}
     </div>
   );
 };
