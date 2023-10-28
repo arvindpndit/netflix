@@ -7,20 +7,17 @@ interface Props {
 
 const MovieCard: React.FC<Props> = (props) => {
   const { movies, title } = props;
-  console.log(movies);
 
   return (
-    <div className="relative px-16 bg-black">
-      <div className="text-xl bg-black text-white font-semibold py-3">
-        {title}
-      </div>
+    <div className="relative -mt-40 px-16 z-50">
+      <div className="text-xl  text-white font-semibold py-3">{title}</div>
       <div className="flex overflow-x-auto flex-row gap-4">
         {movies.map((movie) => {
           const moviePosterImagePath: string = movie?.backdrop_path;
           const movieTitle: string = movie?.title;
           const moviePosterUrl: string = `https://image.tmdb.org/t/p/w500/${moviePosterImagePath}`;
           return (
-            <div className=" flex-shrink-0">
+            <div className="flex-shrink-0">
               <img
                 src={moviePosterUrl}
                 alt={movieTitle}

@@ -32,7 +32,7 @@ const Header: React.FC<Props> = (props) => {
       {user === null ? null : (
         <div className="ml-auto mr-5 flex items-center">
           <button
-            className="mr-2 px-2 py-3 bg-green-600 text-white hover:bg-green-700"
+            className="mr-2 px-2 py-3 bg-green-600 text-white hover:bg-green-700 rounded-lg"
             onClick={() => setToggleSearchAndBrowse(!toggleSearchAndBrowse)}
           >
             {toggleSearchAndBrowse ? "GPT SEARCH" : "BROWSE"}
@@ -40,10 +40,10 @@ const Header: React.FC<Props> = (props) => {
           <img
             src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp"
             alt=""
-            className="h-12 "
+            className="h-12 rounded-lg"
           />
           <button
-            className="ml-2 px-2 py-3 bg-red-600 text-white hover:bg-red-700"
+            className="ml-2 px-2 py-3 bg-red-600 text-white hover:bg-red-700 rounded-lg"
             onClick={handleClick}
           >
             Sign Out

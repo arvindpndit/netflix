@@ -10,7 +10,7 @@ const BrowsePage: React.FC = () => {
   useNowPlayingMovies();
 
   const [toggleSearchAndBrowse, setToggleSearchAndBrowse] =
-    useState<boolean>(false);
+    useState<boolean>(true);
 
   return (
     <div>

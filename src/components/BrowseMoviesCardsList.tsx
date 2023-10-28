@@ -16,7 +16,11 @@ const BrowseMoviesCardsList: React.FC = () => {
     <div>
       {MOVIE_LIST_TITLES.map((title) => {
         let shuffled = shuffleArray(movies);
-        return <MovieCard movies={shuffled} title={title} />;
+        return (
+          <div className="bg-black h-96">
+            <MovieCard movies={shuffled} title={title} />
+          </div>
+        );
       })}
     </div>
   );
