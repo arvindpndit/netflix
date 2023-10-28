@@ -5,7 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { removeUser } from "../redux/userSlice";
 import { RootState } from "../redux/store";
 
-const Header: React.FC = () => {
+interface Props {
+  setToggleSearchAndBrowse: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleSearchAndBrowse: boolean;
+}
+
+const Header: React.FC<Props> = (props) => {
+  const { setToggleSearchAndBrowse, toggleSearchAndBrowse } = props;
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,6 +31,12 @@ const Header: React.FC = () => {
 
       {user === null ? null : (
         <div className="ml-auto mr-5 flex items-center">
+          <button
+            className="mr-2 px-2 py-3 bg-green-600 text-white hover:bg-green-700"
+            onClick={() => setToggleSearchAndBrowse(!toggleSearchAndBrowse)}
+          >
+            {toggleSearchAndBrowse ? "GPT SEARCH" : "BROWSE"}
+          </button>
           <img
             src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp"
             alt=""
