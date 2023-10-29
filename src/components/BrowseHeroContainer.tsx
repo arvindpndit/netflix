@@ -18,7 +18,7 @@ const BrowseHeroContainer: React.FC = () => {
       <div className="bg-black text-white relative">
         <VideoPlayback id={id} />
         <div className="absolute top-0 left-0 right-0 bottom-0 z-10 bg-black bg-opacity-60">
-          <div className="p-4 md:p-8 flex h-full items-center">
+          <div className="p-0 sm:p-4 md:p-8 flex h-full items-center">
             <div className="md:w-1/2">
               <VideoDescription title={title} overview={overview} />
             </div>
