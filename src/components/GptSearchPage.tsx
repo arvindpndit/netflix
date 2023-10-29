@@ -1,20 +1,12 @@
 import React, { useRef } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import MovieCard from "./MovieCard";
 
 const GptSearchPage: React.FC = () => {
   const textInput = useRef<HTMLInputElement>(null);
-  const nowPlayingMovies = useSelector((state: RootState) => state.movie);
-
-  if (!nowPlayingMovies.moviesList) return;
-
-  const movies: [] = nowPlayingMovies.moviesList;
 
   return (
     <div className="bg-[#060604] h-screen flex flex-col items-center justify-center">
       <form
-        className="flex items-center space-x-2 w-1/2 mb-40 h-1/3"
+        className="px-2 sm:px-0 flex items-center space-x-2 w-full sm:w-5/6 md:w-1/2 mb-40 h-1/3"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
@@ -30,7 +22,6 @@ const GptSearchPage: React.FC = () => {
           Search
         </button>
       </form>
-      <MovieCard movies={movies} title={"Popular"} />;
     </div>
   );
 };
