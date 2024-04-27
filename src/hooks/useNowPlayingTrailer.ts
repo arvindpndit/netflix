@@ -16,7 +16,9 @@ const useNowPlayingTrailer = (id: string): string => {
       );
 
       const { key } = json.results[randomIndex];
-      setMovieUrl(`https://www.youtube.com/embed/${key}?mute=1&loop=1`);
+      setMovieUrl(
+        `https://www.youtube.com/embed/${key}?mute=1&loop=1&autoplay=1`
+      );
     } catch (error) {
       throw error;
     }

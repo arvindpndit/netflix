@@ -40,7 +40,7 @@ const Header: React.FC<Props> = (props) => {
             className="mr-2 sm:mr-3 md:mr-2 px-2 sm:px-3 md:px-2 py-3 bg-green-600 text-white hover:bg-green-700 rounded-lg"
             onClick={() => setToggleSearchAndBrowse(!toggleSearchAndBrowse)}
           >
-            {toggleSearchAndBrowse ? "GPT SEARCH" : "BROWSE"}
+            {toggleSearchAndBrowse ? "SEARCH" : "BROWSE"}
           </button>
           <img
             src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-2fg93funipvqfs9i.webp"

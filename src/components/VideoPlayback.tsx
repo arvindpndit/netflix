@@ -17,7 +17,6 @@ const VideoPlayback: React.FC<Props> = ({ id }) => {
           transform: "scale(1.3)",
         }}
         title="YouTube video player"
-        loop="1"
         allow="accelerometer; autoplay; gyroscope; clipboard-write; encrypted-media; picture-in-picture; web-share"
       ></iframe>
     </div>
