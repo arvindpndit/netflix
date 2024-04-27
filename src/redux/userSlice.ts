@@ -4,10 +4,12 @@ const userSlice = createSlice({
   name: "user",
   initialState: null,
   reducers: {
-    addUser: (action) => {
+    //@ts-ignore
+    addUser: (state, action) => {
       return action.payload;
     },
-    removeUser: () => {
+    //@ts-ignore
+    removeUser: (state) => {
       return null;
     },
   },
